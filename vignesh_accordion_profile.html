@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh Manoharan | Professional Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            background: #E3F2FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #2196F3;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .professional-summary {
+            padding: 40px;
+            background: #F8FBFF;
+            border-left: 5px solid #2196F3;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1976D2;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Accordion Styles */
+        .accordion-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .accordion {
+            background-color: #fff;
+            color: #1976D2;
+            cursor: pointer;
+            padding: 25px 30px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #E3F2FD;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .accordion:hover {
+            background-color: #F8FBFF;
+            color: #2196F3;
+        }
+
+        .accordion.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .accordion:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .accordion-arrow {
+            position: absolute;
+            right: 30px;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .panel {
+            padding: 0;
+            background-color: #fafafa;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border-left: 4px solid #2196F3;
+        }
+
+        .panel.active {
+            max-height: 1000px;
+            padding: 30px;
+        }
+
+        .panel-content {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 12px 16px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            color: #1976D2;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Experience Items */
+        .experience-item {
+            background: #F8FBFF;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #64B5F6;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: #E3F2FD;
+            border-left-color: #2196F3;
+            transform: translateX(5px);
+        }
+
+        .experience-title {
+            font-weight: 600;
+            color: #1976D2;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .experience-company {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .experience-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Achievement Items */
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #F8FBFF;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: #E3F2FD;
+            transform: translateX(5px);
+        }
+
+        .achievement-icon {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header-section {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .accordion {
+                padding: 20px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .accordion-arrow {
+                right: 20px;
+            }
+            
+            .panel.active {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Industry Tags */
+        .industry-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .industry-tag {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #1976D2;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .industry-tag:hover {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="profile-card loading-animation">
+            <div class="header-section">
+                <div class="profile-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="name">Vignesh Manoharan</h1>
+                <p class="title">Senior Technology Consultant & Business Strategist</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>vignesh.manoharan@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>UK / India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary (Fixed at Top) -->
+        <div class="profile-card loading-animation">
+            <div class="professional-summary">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Professional Summary
+                </h2>
+                <p class="summary-text">
+                    Accomplished technology leader with 13+ years of progressive experience spanning software development, 
+                    solution architecture, and strategic consulting. Currently serving as Manager – Consulting at Cognizant UK, 
+                    I specialize in driving digital transformation initiatives across diverse industries including Telecom, 
+                    Financial Services, Legal, and Media sectors. My expertise encompasses end-to-end solution design, 
+                    from technical architecture to business strategy, with a proven track record of delivering complex 
+                    enterprise solutions and leading cross-functional teams. I excel in stakeholder engagement, 
+                    RFP/RFQ management, and translating business requirements into scalable technical solutions.
+                </p>
+            </div>
+        </div>
+
+        <!-- Accordion Sections -->
+        <div class="accordion-container loading-animation">
+            <!-- Technical Expertise -->
+            <button class="accordion">
+                <i class="fas fa-code accordion-icon"></i>
+                <span>Technical Expertise</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="skills-grid">
+                        <div class="skill-item">.NET & C#</div>
+                        <div class="skill-item">SQL & Databases</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">Microservices</div>
+                        <div class="skill-item">Azure Cloud</div>
+                        <div class="skill-item">Snowflake</div>
+                        <div class="skill-item">Data Lakes</div>
+                        <div class="skill-item">AI/ML Architecture</div>
+                        <div class="skill-item">OLTP/OLAP</div>
+                        <div class="skill-item">Middleware Integration</div>
+                        <div class="skill-item">DevOps & CI/CD</div>
+                        <div class="skill-item">API Design</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business & Consulting -->
+            <button class="accordion">
+                <i class="fas fa-handshake accordion-icon"></i>
+                <span>Business & Consulting Skills</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Strategic Consulting</div>
+                            <div class="experience-description">Leading consulting-driven solutioning and stakeholder engagement across enterprise clients</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">RFP/RFQ Management</div>
+                            <div class="experience-description">End-to-end ownership of proposal processes and account expansion initiatives</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">M&A Strategy</div>
+                            <div class="experience-description">AS-IS/TO-BE operating model design and cloud strategy implementation</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Automation Office Setup</div>
+                            <div class="experience-description">Establishing centers of excellence for cloud automation and digital transformation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Journey -->
+            <button class="accordion">
+                <i class="fas fa-briefcase accordion-icon"></i>
+                <span>Career Journey</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="experience-item">
+                        <div class="experience-title">Manager – Consulting</div>
+                        <div class="experience-company">Cognizant UK (Current)</div>
+                        <div class="experience-description">Leading strategic consulting initiatives and driving digital transformation across multiple industry verticals. Managing high-value client relationships and overseeing complex enterprise solution delivery.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-title">Solution Architect</div>
+                        <div class="experience-company">Previous Leadership Roles</div>
+                        <div class="experience-description">Designed enterprise-scale solutions and led technical architecture decisions. Established best practices for solution delivery and mentored technical teams.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-title">Technical Lead & Business Analyst</div>
+                        <div class="experience-company">Career Progression</div>
+                        <div class="experience-description">Evolved from .NET developer to technical leadership and business analysis roles. Bridged the gap between business requirements and technical implementation.</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-title">.NET Developer</div>
+                        <div class="experience-company">TCS (2011)</div>
+                        <div class="experience-description">Started career foundation in software development and enterprise applications. Built strong technical fundamentals in .NET ecosystem.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry Experience -->
+            <button class="accordion">
+                <i class="fas fa-industry accordion-icon"></i>
+                <span>Industry Expertise</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="industry-tags">
+                        <div class="industry-tag">Telecommunications</div>
+                        <div class="industry-tag">Financial Services</div>
+                        <div class="industry-tag">Media & Entertainment</div>
+                        <div class="industry-tag">Legal Services</div>
+                        <div class="industry-tag">Startup Ecosystem</div>
+                        <div class="industry-tag">Healthcare Technology</div>
+                    </div>
+                    <div style="margin-top: 25px;">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <div class="experience-title">Startup Consulting</div>
+                                <div class="experience-description">Provided high-level architecture guidance and designed AI/ML-driven risk platforms for CXO decision-making. Supported multiple startups in scaling their technology infrastructure.</div>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <div class="experience-title">Enterprise Solutions</div>
+                                <div class="experience-description">Delivered complex enterprise solutions across Fortune 500 companies, focusing on digital transformation and modernization initiatives.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Achievements -->
+            <button class="accordion">
+                <i class="fas fa-trophy accordion-icon"></i>
+                <span>Key Achievements</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Cross-functional Leadership</div>
+                            <div class="experience-description">Successfully led diverse teams across technical and business domains, delivering complex enterprise solutions on time and within budget.</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Cloud Transformation</div>
+                            <div class="experience-description">Established automation offices and drove cloud strategy implementations across multiple organizations, resulting in significant cost savings and efficiency gains.</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">AI/ML Innovation</div>
+                            <div class="experience-description">Architected AI/ML platforms for enterprise risk management and decision support, enabling data-driven strategic decision making.</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Global Market Expertise</div>
+                            <div class="experience-description">Developed deep understanding of UK and European markets while maintaining strong connections to emerging Indian technology landscape.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Outlook -->
+            <button class="accordion">
+                <i class="fas fa-compass accordion-icon"></i>
+                <span>Future Outlook</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="panel">
+                <div class="panel-content">
+                    <div class="experience-description" style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7;">
+                        Planning strategic return to India to reunite with family while maintaining global consulting capabilities. 
+                        Actively seeking India-based opportunities or remote consulting engagements that leverage my international 
+                        experience and cross-industry expertise.
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Strategic Relocation</div>
+                            <div class="experience-description">Planning return to India while leveraging UK market experience and maintaining global consulting network for maximum impact.</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-bridge"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Global Perspective</div>
+                            <div class="experience-description">Bringing UK market insights and international best practices to Indian market opportunities, creating unique value propositions.</div>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <div>
+                            <div class="experience-title">Remote Excellence</div>
+                            <div class="experience-description">Proven track record in remote consulting and virtual team leadership, ready for distributed work environments.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="footer">
+            <h3 style="margin-bottom: 20px;">Let's Connect & Collaborate</h3>
+            <p style="margin-bottom: 20px;">Ready to drive your next digital transformation initiative</p>
+            <a href="mailto:vignesh.manoharan@email.com" class="cta-button">
+                <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+            <a href="#" class="cta-button">
+                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.querySelectorAll('.accordion');
+            
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', function() {
+                    // Close all other accordions
+                    accordions.forEach(otherAccordion => {
+                        if (otherAccordion !== this) {
+                            otherAccordion.classList.remove('active');
+                            otherAccordion.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current accordion
+                    this.classList.toggle('active');
+                    const panel = this.nextElementSibling;
+                    panel.classList.toggle('active');
+                });
+            });
+
+            // Loading animations
+            const elements = document.querySelectorAll('.loading-animation');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.animationDelay = `${index * 0.2}s`;
+                }, index * 100);
+            });
+
+            // Skill hover effects
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(1deg)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Industry tag hover effects
+            const industryTags = document.querySelectorAll('.industry-tag');
+            industryTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) translateY(-2px)';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) translateY(0)';
+                });
+            });
+
+            // Parallax effect for header
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const header = document.querySelector('.header-section');
+                if (header) {
+                    header.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            });
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add typing effect to name
+            const nameElement = document.querySelector('.name');
+            if (nameElement) {
+                const originalText = nameElement.textContent;
+                nameElement.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < originalText.length) {
+                        nameElement.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                setTimeout(typeWriter, 500);
+            }
+
+            // Auto-open first accordion after page load
+            setTimeout(() => {
+                if (accordions.length > 0) {
+                    accordions[0].click();
+                }
+            }, 1500);
+        });
+
+        // Print functionality
+        function printProfile() {
+            window.print();
+        }
+
+        // Share functionality
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Vignesh Manoharan - Professional Profile',
+                    text: 'Check out this professional profile',
+                    url: window.location.href
+                });
+            } else {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Profile URL copied to clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
